@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: mlapps
-        image: ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:v1.0.5
+        image: 900641642158.dkr.ecr.us-east-1.amazonaws.com/techno_ecr_jt2_filzahyfa:v1.0.6
         imagePullPolicy: Always
         ports:
         - containerPort: 2000
