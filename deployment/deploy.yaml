@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: mlapps
-        image: ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:latest
+        image: ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:v1.0.5
         imagePullPolicy: Always
         ports:
         - containerPort: 2000
