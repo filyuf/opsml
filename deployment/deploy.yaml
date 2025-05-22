@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: mlapps
-        image: 900641642158.dkr.ecr.us-east-1.amazonaws.com/techno_ecr_jt2_filzahyfa:v1.0.6
+        image: 900641642158.dkr.ecr.us-east-1.amazonaws.com/techno_ecr_jt2_filzahyfa:v1.0.7
         imagePullPolicy: Always
         ports:
         - containerPort: 2000
@@ -36,7 +36,7 @@ spec:
         - name: FLASK_SECRET_KEY
           value: lks
         - name: API_GATEWAY_URL
-          value: https://98siwbufkd.execute-api.us-east-1.amazonaws.com/production
+          value: https://d6rlrawfh5.execute-api.us-east-1.amazonaws.com/production
         - name: SNS_TOPIC_ARN
           value: arn:aws:sns:us-east-1:900641642158:techno-sns-jt2-filzahyfa
         - name: ATHENA_SCHEMA_NAME
