@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mlapps-deployment
+  labels:
+    app: mlapps
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mlapps
+  template:
+    metadata:
+      labels:
+        app: mlapps
+    spec:
+      containers:
+      - name: mlapps
+        image: ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 2000
+        env:
+        - name: AWS_ACCESS_KEY_ID
+          value: QVNJQTVETVRNMjJYS0xJSEhYTE0=
+        - name: AWS_SECRET_ACCESS_KEY
+          value: Y29MQ1FaNVdxTVo3Q05la3FMQXI3a2xFeTl6OXBrR3FyYXQ2Y0ZZeQ==
+        - name: AWS_SESSION_TOKEN
+          value: SVFvSmIzSnBaMmx1WDJWakVCWWFDWFZ6TFhkbGMzUXRNaUpJTUVZQ0lRQ2Rnbm9rQlkxNXhqQWNtOHhWYnlKM2xuc1pqc3pVbTlieDNrTzc4ellVd1FJaEFQNFNOVHY1Q1VsbWp5V2N5c0RUa3JrNUdCL2RyUnF1dUZpYWJ4Qm15Y2xRS3JzQ0NNLy8vLy8vLy8vLy93RVFBQm9NT1RBd05qUXhOalF5TVRVNElnekcwM0xwUGVHQm5XTXh5TDBxandKTW9qUUpKU2N0eDFnM2ppQ2VlLytXblNyUHhJdGRLUlVuWjNQbFl6OHljaldESW5LMkNDdkpxaFlNVTVsMG5GNHpENVlRWURjT2w2VmV0WWdzczlDL2hxSC9wbWNTVUFsUDMvaXkxcWE3cmxFVGUxRkJxWHV6WEp0OWJLc3U3TXZFRGUzZll2ZDU4MlNSQmpxUEh5blhoam5BeXlmQVRRZ0dGa1lxYmlVMVR4Nm5sUmRueEhxMHFnK0tlelp2SlBZeEJ3K3VyaEZoZ2pPWGZqbzA4d1JXeWxQZFBqdnB1Y2JwOXd2YUdkOXA5Tk02TmI5QVp2bi8xaUU0cmVzbUI3N1Z0SWNyaVdORWJmQllUNDBSSi8za3lKeTVlOHpGbmUwWENMOXVKNVYyTmpVNEYrcHVjSkVhZ01aWFlTc0ljT2RoTmU5L2ZyT1FlZTdRaGhWMTdXOTNJS1JLMjNpWmI3MGVTK2d5V1ZyNk1NMzV1c0VHT3B3QmV5aVJkSks0SFlXYWJybk45bkwyMklKRDhqV2NyNURtMWVacVkzU21QR2dqQTRHWi9xNlM4UzBRT2JmdFM2d0UyYW9vQi9ab3p3Tk5PcUFXYW0rYnZyVTJkZzRiK0R5Y1Z4TC9JdU52dVlnZjFFVFFxRTVldW0rU0dqM1BhK0U4SWRRZGFISytGcytSZlgvY3A5OXF2SmNQWmt0UmFHYnRqN0FlVVdici9DZkVGYzZLSXVURkZZS1JWbGVtTUp2WE1JY2t4dUxRZGhrMDZxZkU=
+        - name: AWS_REGION
+          value: us-east-1
+        - name: ATHENA_DB
+          value: us-east-1
+        - name: S3_STAGING_DIR
+          value: s3://technooutput-jt2-filzahyfa/results/
+        - name: FLASK_SECRET_KEY
+          value: lks
+        - name: API_GATEWAY_URL
+          value: https://98siwbufkd.execute-api.us-east-1.amazonaws.com/production
+        - name: SNS_TOPIC_ARN
+          value: arn:aws:sns:us-east-1:900641642158:techno-sns-jt2-filzahyfa
+        - name: ATHENA_SCHEMA_NAME
+          value: rekognition_results_db

@@ -86,7 +86,7 @@ def dashboard():
 
     query = """
         SELECT image_key, label.Name AS label, label.Confidence AS confidence
-        FROM rekognition_results_db.rekognition_results_table
+        FROM rekognition_results_db.results
         CROSS JOIN UNNEST(labels) AS t(label)
         LIMIT 100
     """
