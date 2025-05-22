@@ -68,12 +68,10 @@ jobs:
         run: |
           aws eks update-kubeconfig --name ${{ secrets.CLUSTER_NAME }} --region ${{ secrets.AWS_REGION }}
 
-      - name: Delete old Kubernetes resources
-        run: |
-          kubectl delete -f --ignore-not-found=true ./deployment/deploy.yaml
-          kubectl delete -f --ignore-not-found=true ./deployment/service.yaml
+      # - name: Delete old Kubernetes resources
+      #   run: |
+      #     kubectl delete -f --ignore-not-found=true ./deployment/
 
       - name: Deploy new version to EKS
         run: |
-          kubectl apply -f ./deployment/deploy.yaml
-          kubectl apply -f ./deployment/service.yaml
+          kubectl apply -f ./deployment/
